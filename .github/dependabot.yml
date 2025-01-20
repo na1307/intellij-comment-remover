@@ -7,9 +7,29 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: daily
+      time: "18:00"
+      timezone: Asia/Seoul
+    assignees:
+      - na1307
+    pull-request-branch-name:
+      separator: _
+    reviewers:
+      - na1307
+    groups:
+      default:
+        patterns:
+          - "*"
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: monthly
+      time: "12:00"
+      timezone: Asia/Seoul
+    assignees:
+      - na1307
+    pull-request-branch-name:
+      separator: _
+    reviewers:
+      - na1307
