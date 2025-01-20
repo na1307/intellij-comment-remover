@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>net.bluehill.commentRemover</id>
     <name>Comment Remover</name>
-    <vendor>Bluehill</vendor>
+    <vendor url="https://na1307.github.io" email="na1307@outlook.kr">Bluehill</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
@@ -14,6 +14,14 @@
             class="net.bluehill.commentRemover.actions.RemoveAllCommentAction"
             text="Remove All Comment"
             description="Remove all comment">
+            <add-to-group group-id="EditMenu" anchor="first"/>
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+        </action>
+        <action
+            id="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction"
+            class="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction"
+            text="Remove Selected Comment"
+            description="Remove seleted comment">
             <add-to-group group-id="EditMenu" anchor="first"/>
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
         </action>
