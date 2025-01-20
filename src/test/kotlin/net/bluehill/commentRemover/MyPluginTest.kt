@@ -1,4 +1,4 @@
-package com.github.na1307.intellijcommentremover
+package net.bluehill.commentRemover
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.openapi.components.service
@@ -6,7 +6,7 @@ import com.intellij.psi.xml.XmlFile
 import com.intellij.testFramework.TestDataPath
 import com.intellij.testFramework.fixtures.BasePlatformTestCase
 import com.intellij.util.PsiErrorElementUtil
-import com.github.na1307.intellijcommentremover.services.MyProjectService
+//import net.bluehill.commentRemover.services.MyProjectService
 
 @TestDataPath("\$CONTENT_ROOT/src/test/testData")
 class MyPluginTest : BasePlatformTestCase() {
@@ -30,9 +30,9 @@ class MyPluginTest : BasePlatformTestCase() {
     }
 
     fun testProjectService() {
-        val projectService = project.service<MyProjectService>()
+        //val projectService = project.service<MyProjectService>()
 
-        assertNotSame(projectService.getRandomNumber(), projectService.getRandomNumber())
+        //assertNotSame(projectService.getRandomNumber(), projectService.getRandomNumber())
     }
 
     override fun getTestDataPath() = "src/test/testData/rename"

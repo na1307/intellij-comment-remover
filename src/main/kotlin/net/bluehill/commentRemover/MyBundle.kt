@@ -1,4 +1,4 @@
-package com.github.na1307.intellijcommentremover
+package net.bluehill.commentRemover
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
