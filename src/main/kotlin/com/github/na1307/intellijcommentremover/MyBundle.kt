@@ -1,4 +1,4 @@
-package org.jetbrains.plugins.template
+package com.github.na1307.intellijcommentremover
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
