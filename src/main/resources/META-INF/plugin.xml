@@ -1,29 +1,27 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
-<idea-plugin>
-    <id>net.bluehill.commentRemover</id>
-    <name>Comment Remover</name>
-    <vendor url="https://na1307.github.io" email="na1307@outlook.kr">Bluehill</vendor>
+<idea-plugin url="https://github.com/na1307/intellij-comment-remover">
+  <id>net.bluehill.commentRemover</id>
+  <name>Comment Remover</name>
+  <vendor url="https://na1307.github.io" email="na1307@outlook.kr">Bluehill</vendor>
 
-    <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.platform</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
+  <resource-bundle>messages.MyBundle</resource-bundle>
 
-    <actions>
-        <action
-            id="net.bluehill.commentRemover.actions.RemoveAllCommentAction"
-            class="net.bluehill.commentRemover.actions.RemoveAllCommentAction"
-            text="Remove All Comment"
-            description="Remove all comment">
-            <add-to-group group-id="EditMenu" anchor="first"/>
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
-        <action
-            id="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction"
-            class="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction"
-            text="Remove Selected Comment"
-            description="Remove seleted comment">
-            <add-to-group group-id="EditMenu" anchor="first"/>
-            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
-        </action>
-    </actions>
+  <actions>
+    <group id="BluehillCommentRemover">
+      <add-to-group group-id="EditMenu" relative-to-action="Macros" anchor="before"/>
+      <add-to-group group-id="EditorPopupMenu" relative-to-action="EditorToggleColumnMode" anchor="after"/>
+      <separator/>
+      <action
+          id="net.bluehill.commentRemover.actions.RemoveAllCommentAction"
+          class="net.bluehill.commentRemover.actions.RemoveAllCommentAction">
+      </action>
+      <action
+          id="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction"
+          class="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction">
+      </action>
+      <separator/>
+    </group>
+  </actions>
 </idea-plugin>
