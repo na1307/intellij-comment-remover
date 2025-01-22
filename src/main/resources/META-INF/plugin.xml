@@ -2,7 +2,7 @@
 <idea-plugin url="https://github.com/na1307/intellij-comment-remover">
   <id>net.bluehill.commentRemover</id>
   <name>Comment Remover</name>
-  <vendor url="https://na1307.github.io" email="na1307@outlook.kr">Bluehill</vendor>
+  <vendor url="https://na1307.github.io" email="na1307@outlook.kr">Jonghyo Lee</vendor>
 
   <depends>com.intellij.modules.platform</depends>
 
