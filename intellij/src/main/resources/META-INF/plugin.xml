@@ -22,6 +22,22 @@
           id="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction"
           class="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction">
       </action>
+      <action
+          id="net.bluehill.commentRemover.actions.RemoveAllDocCommentAction"
+          class="net.bluehill.commentRemover.actions.RemoveAllDocCommentAction">
+      </action>
+      <action
+          id="net.bluehill.commentRemover.actions.RemoveSelectedDocCommentAction"
+          class="net.bluehill.commentRemover.actions.RemoveSelectedDocCommentAction">
+      </action>
+      <action
+          id="net.bluehill.commentRemover.actions.RemoveAllExceptDocCommentAction"
+          class="net.bluehill.commentRemover.actions.RemoveAllExceptDocCommentAction">
+      </action>
+      <action
+          id="net.bluehill.commentRemover.actions.RemoveSelectedExceptDocCommentAction"
+          class="net.bluehill.commentRemover.actions.RemoveSelectedExceptDocCommentAction">
+      </action>
       <separator/>
     </group>
   </actions>

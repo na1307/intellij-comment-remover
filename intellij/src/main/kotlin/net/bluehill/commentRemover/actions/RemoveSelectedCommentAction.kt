@@ -9,7 +9,7 @@ import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
 import net.bluehill.commentRemover.CrBundle
 
-class RemoveSelectedCommentAction : RemoveCommentAction() {
+open class RemoveSelectedCommentAction : RemoveCommentAction() {
     override fun removeComment(proj: Project, comments: Iterable<PsiComment>) {
         val editor = FileEditorManager.getInstance(proj).selectedTextEditor
 
