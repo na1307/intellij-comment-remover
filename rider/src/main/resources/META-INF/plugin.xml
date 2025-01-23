@@ -6,4 +6,15 @@
 
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.rider</depends>
+
+  <resource-bundle>messages.CrrBundle</resource-bundle>
+  
+  <actions>
+    <action id="net.bluehill.commentRemover.rider.actions.RemoveAllCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveAllCommentAction">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
+    <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedCommentAction">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
+  </actions>
 </idea-plugin>

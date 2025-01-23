@@ -8,7 +8,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
 import com.intellij.psi.PsiComment
 import com.intellij.psi.util.PsiTreeUtil
-import net.bluehill.commentRemover.MyBundle
+import net.bluehill.commentRemover.CrBundle
 
 abstract class RemoveCommentAction : AnAction() {
     final override fun update(event: AnActionEvent) {
@@ -19,14 +19,14 @@ abstract class RemoveCommentAction : AnAction() {
         val proj = event.project
 
         if (proj == null) {
-            Messages.showErrorDialog(MyBundle.message("projectIsNull"), "Error")
+            Messages.showErrorDialog(CrBundle.message("projectIsNull"), "Error")
             return
         }
 
         val pf = event.getData(CommonDataKeys.PSI_FILE)
 
         if (pf == null) {
-            Messages.showErrorDialog(proj, MyBundle.message("psiFileIsNull"), "Error")
+            Messages.showErrorDialog(proj, CrBundle.message("psiFileIsNull"), "Error")
             return
         }
 

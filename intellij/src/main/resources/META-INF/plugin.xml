@@ -7,7 +7,7 @@
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
 
-  <resource-bundle>messages.MyBundle</resource-bundle>
+  <resource-bundle>messages.CrBundle</resource-bundle>
 
   <actions>
     <group id="BluehillCommentRemover">

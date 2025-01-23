@@ -7,14 +7,14 @@ import com.intellij.openapi.project.Project
 import com.intellij.openapi.ui.Messages
 import com.intellij.psi.PsiComment
 import com.intellij.psi.PsiElement
-import net.bluehill.commentRemover.MyBundle
+import net.bluehill.commentRemover.CrBundle
 
 class RemoveSelectedCommentAction : RemoveCommentAction() {
     override fun removeComment(proj: Project, comments: Iterable<PsiComment>) {
         val editor = FileEditorManager.getInstance(proj).selectedTextEditor
 
         if (editor == null) {
-            Messages.showErrorDialog(proj, MyBundle.message("editorIsNull"), "Error")
+            Messages.showErrorDialog(proj, CrBundle.message("editorIsNull"), "Error")
             return
         }
 

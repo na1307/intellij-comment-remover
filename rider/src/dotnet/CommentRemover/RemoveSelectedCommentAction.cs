@@ -13,10 +13,9 @@ using JetBrains.Util;
 
 namespace CommentRemover;
 
-#pragma warning disable CS0618 // 형식 또는 멤버는 사용되지 않습니다.
-[Action("PLACEHOLDER")]
-#pragma warning restore CS0618 // 형식 또는 멤버는 사용되지 않습니다.
-public sealed class Test2Action : ExecutableAction {
+[Action(typeof(Properties.Resources), nameof(Properties.Resources.PlaceholderText),
+    DescriptionResourceName = nameof(Properties.Resources.PlaceholderText))]
+public sealed class RemoveSelectedCommentAction : RemoveCommentAction {
     public override void Execute(IDataContext context, DelegateExecute nextExecute) {
         var sourceFile = context.GetData(PsiDataConstants.SOURCE_FILE);
         var file = sourceFile?.GetPrimaryPsiFile();

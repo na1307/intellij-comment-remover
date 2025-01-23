@@ -9,7 +9,7 @@ using JetBrains.ReSharper.Psi.VB;
 
 namespace CommentRemover;
 
-public abstract class ExecutableAction : IExecutableAction {
+public abstract class RemoveCommentAction : IExecutableAction {
     public bool Update(IDataContext context, ActionPresentation presentation, [InstantHandle] DelegateUpdate nextUpdate) {
         var file = context.GetData(PsiDataConstants.SOURCE_FILE);
         var language = file?.LanguageType;
