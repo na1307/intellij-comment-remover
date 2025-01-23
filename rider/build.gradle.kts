@@ -1,50 +1,106 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+import org.gradle.kotlin.dsl.support.serviceOf
 import org.jetbrains.changelog.Changelog
 import org.jetbrains.changelog.markdownToHTML
-import org.jetbrains.intellij.platform.gradle.TestFrameworkType
+import java.io.ByteArrayOutputStream
 
 plugins {
     id("java") // Java support
     alias(libs.plugins.kotlin) // Kotlin support
     alias(libs.plugins.intelliJPlatform) // IntelliJ Platform Gradle Plugin
     alias(libs.plugins.changelog) // Gradle Changelog Plugin
-    alias(libs.plugins.kover) // Gradle Kover Plugin
 }
 
-group = providers.gradleProperty("pluginGroupIJ").get()
+group = providers.gradleProperty("pluginGroupRD").get()
 version = providers.gradleProperty("pluginVersion").get()
+
+val isWindows = Os.isFamily(Os.FAMILY_WINDOWS)
+extra["isWindows"] = isWindows
+
+val dotnetSolution: String by project
+val buildConfiguration: String by project
+val dotnetPluginId: String by project
+
+val buildToolExecutable: String by lazy {
+    if (isWindows) {
+        val stdout = ByteArrayOutputStream()
+        serviceOf<ExecOperations>().exec {
+            executable("${project.projectDir}/tools/vswhere.exe")
+            args("-latest", "-property", "installationPath", "-products", "*")
+            standardOutput = stdout
+        }
+        val directory = stdout.toString().trim()
+        if (directory.isNotEmpty()) {
+            File(directory).walkTopDown()
+                .filter { it.name == "MSBuild.exe" }
+                .map { it.absolutePath }
+                .firstOrNull() ?: "msbuild"
+        } else {
+            "msbuild"
+        }
+    } else {
+        "dotnet"
+    }
+}
+
+val buildToolArgs: List<String> by lazy {
+    mutableListOf<String>().apply {
+        add(if (isWindows) "/v:minimal" else "msbuild")
+        add(dotnetSolution)
+        add("/p:Configuration=$buildConfiguration")
+        add("/p:HostFullIdentifier=")
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { setUrl("https://cache-redirector.jetbrains.com/maven-central") }
+
+    intellijPlatform {
+        defaultRepositories()
+    }
+}
 
 // Set the JVM language level used to build the project.
 kotlin {
     jvmToolchain(21)
 }
 
-// Configure project's dependencies
-repositories {
-    mavenCentral()
-
-    // IntelliJ Platform Gradle Plugin Repositories Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-repositories-extension.html
-    intellijPlatform {
-        defaultRepositories()
+val compileDotNet by tasks.registering {
+    doLast {
+        val executable = buildToolExecutable
+        val arguments = buildToolArgs.toMutableList()
+        arguments.add("/t:Restore;Rebuild")
+        serviceOf<ExecOperations>().exec {
+            executable(executable)
+            args(arguments)
+            workingDir(projectDir)
+        }
     }
 }
 
-// Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/platforms.html#sub:version-catalog
-dependencies {
-    testImplementation(libs.junit)
+val testDotNet by tasks.registering {
+    doLast {
+        serviceOf<ExecOperations>().exec {
+            executable("dotnet")
+            args("test", dotnetSolution, "--logger", "GitHubActions")
+            workingDir(rootDir)
+        }
+    }
+}
 
-    // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
+dependencies {
     intellijPlatform {
-        intellijIdeaCommunity(providers.gradleProperty("platformVersionIJ"))
+        rider(providers.gradleProperty("platformVersionRD"))
 
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
-        bundledPlugins(providers.gradleProperty("platformBundledPluginsIJ").map { it.split(',') })
+        bundledPlugins(providers.gradleProperty("platformBundledPluginsRD").map { it.split(',') })
 
         // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
-        plugins(providers.gradleProperty("platformPluginsIJ").map { it.split(',') })
+        plugins(providers.gradleProperty("platformPluginsRD").map { it.split(',') })
 
         pluginVerifier()
         zipSigner()
-        testFramework(TestFrameworkType.Platform)
     }
 }
 
@@ -96,7 +152,8 @@ intellijPlatform {
         // The pluginVersion is based on the SemVer (https://semver.org) and supports pre-release labels, like 2.1.7-alpha.3
         // Specify pre-release label to publish the plugin in a custom Release Channel automatically. Read more:
         // https://plugins.jetbrains.com/docs/intellij/deployment.html#specifying-a-release-channel
-        channels = providers.gradleProperty("pluginVersion").map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
+        channels = providers.gradleProperty("pluginVersion")
+            .map { listOf(it.substringAfter('-', "").substringBefore('.').ifEmpty { "default" }) }
     }
 
     pluginVerification {
@@ -112,20 +169,58 @@ changelog {
     repositoryUrl = providers.gradleProperty("pluginRepositoryUrl")
 }
 
-// Configure Gradle Kover Plugin - read more: https://github.com/Kotlin/kotlinx-kover#configuration
-kover {
-    reports {
-        total {
-            xml {
-                onCheck = true
+tasks {
+    buildPlugin {
+        doLast {
+            copy {
+                from("${layout.buildDirectory}/distributions/${project.name}-${version}.zip")
+                into("${projectDir}/output")
+            }
+
+            val executable = buildToolExecutable
+            val arguments = buildToolArgs.toMutableList()
+            arguments.add("/t:Pack")
+            arguments.add("/p:PackageOutputPath=${projectDir}/output")
+            arguments.add("/p:PackageVersion=${version}")
+            serviceOf<ExecOperations>().exec {
+                executable(executable)
+                args(arguments)
+                workingDir(projectDir)
             }
         }
     }
-}
 
-tasks {
+    runIde {
+        // Match Rider's default heap size of 1.5Gb (default for runIde is 512Mb)
+        maxHeapSize = "1500m"
+    }
+
+    prepareSandbox {
+        dependsOn(compileDotNet)
+
+        val outputFolder = "${projectDir}/src/dotnet/${dotnetPluginId}/bin/${buildConfiguration}"
+        val dllFiles = listOf(
+            "$outputFolder/${dotnetPluginId}.dll",
+            "$outputFolder/${dotnetPluginId}.pdb",
+        )
+
+        dllFiles.forEach { f ->
+            val file = file(f)
+            from(file) { into("${project.name}/dotnet") }
+        }
+
+        doLast {
+            dllFiles.forEach { f ->
+                val file = file(f)
+                if (!file.exists()) throw RuntimeException("File $file does not exist")
+            }
+        }
+    }
+
     publishPlugin {
         dependsOn(patchChangelog)
+        dependsOn(testDotNet)
+        dependsOn(buildPlugin)
     }
 }
 

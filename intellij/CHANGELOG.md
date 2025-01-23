@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# intellij-comment-remover Changelog
+# Comment Remover Changelog
 
 ## [Unreleased]
 ### Added

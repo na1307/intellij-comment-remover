@@ -6,3 +6,6 @@ rootProject.name = "intellij-comment-remover"
 
 include("intellij")
 project(":intellij").name = "comment-remover"
+
+include("rider")
+project(":rider").name = "comment-remover-rider"
