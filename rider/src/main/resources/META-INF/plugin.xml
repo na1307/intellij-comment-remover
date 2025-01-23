@@ -16,5 +16,17 @@
     <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedCommentAction">
       <add-to-group group-id="BuildMenu" anchor="first"/>
     </action>
+    <action id="net.bluehill.commentRemover.rider.actions.RemoveAllDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveAllDocCommentAction">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
+    <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedDocCommentAction">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
+    <action id="net.bluehill.commentRemover.rider.actions.RemoveAllExceptDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveAllExceptDocCommentAction">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
+    <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedExceptDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedExceptDocCommentAction">
+      <add-to-group group-id="BuildMenu" anchor="first"/>
+    </action>
   </actions>
 </idea-plugin>

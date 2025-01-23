@@ -4,12 +4,11 @@ using JetBrains.Application.UI.Actions;
 using JetBrains.Application.UI.ActionsRevised.Menu;
 using JetBrains.ReSharper.Psi.CSharp;
 using JetBrains.ReSharper.Psi.DataContext;
-using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.ReSharper.Psi.VB;
 
 namespace CommentRemover;
 
-public abstract class RemoveCommentAction : IExecutableAction {
+public abstract class RemoveCommentActionBase : IExecutableAction {
     public bool Update(IDataContext context, ActionPresentation presentation, [InstantHandle] DelegateUpdate nextUpdate) {
         var file = context.GetData(PsiDataConstants.SOURCE_FILE);
         var language = file?.LanguageType;
@@ -18,14 +17,4 @@ public abstract class RemoveCommentAction : IExecutableAction {
     }
 
     public abstract void Execute(IDataContext context, DelegateExecute nextExecute);
-
-    protected static IEnumerable<ITreeNode> GetAllChildrens(ITreeNode node) {
-        foreach (var child in node.Children()) {
-            yield return child;
-
-            foreach (var childnode in GetAllChildrens(child)) {
-                yield return childnode;
-            }
-        }
-    }
 }

@@ -5,6 +5,6 @@ namespace CommentRemover;
 
 [Action(typeof(Properties.Resources), nameof(Properties.Resources.PlaceholderText),
     DescriptionResourceName = nameof(Properties.Resources.PlaceholderText))]
-public sealed class RemoveAllCommentAction : RemoveAllCommentActionBase<ICommentNode> {
-    protected override IEnumerable<ITreeNode> AdditionalNodes => Childrens!.OfType<IDocCommentBlock>();
+public sealed class RemoveAllDocCommentAction : RemoveAllCommentActionBase<IDocCommentBlock> {
+    protected override IEnumerable<ITreeNode> AdditionalNodes { get; } = [];
 }
