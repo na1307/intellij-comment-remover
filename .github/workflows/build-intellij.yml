@@ -60,9 +60,9 @@ jobs:
         id: properties
         shell: bash
         run: |
-          PROPERTIES="$(./gradlew :intellij:properties --console=plain -q)"
+          PROPERTIES="$(./gradlew :comment-remover:properties --console=plain -q)"
           VERSION="$(echo "$PROPERTIES" | grep "^version:" | cut -f2- -d ' ')"
-          CHANGELOG="$(./gradlew :intellij:getChangelog --unreleased --no-header --console=plain -q)"
+          CHANGELOG="$(./gradlew :comment-remover:getChangelog --unreleased --no-header --console=plain -q)"
 
           echo "version=$VERSION" >> $GITHUB_OUTPUT
           echo "pluginVerifierHomeDir=~/.pluginVerifier" >> $GITHUB_OUTPUT
@@ -73,7 +73,7 @@ jobs:
 
       # Build plugin
       - name: Build plugin
-        run: ./gradlew :intellij:buildPlugin
+        run: ./gradlew :comment-remover:buildPlugin
 
       # Prepare plugin archive content for creating artifact
       - name: Prepare Plugin Artifact
@@ -117,7 +117,7 @@ jobs:
 
       # Run tests
       - name: Run Tests
-        run: ./gradlew :intellij:check
+        run: ./gradlew :comment-remover:check
 
       # Collect Tests Result of failed tests
       - name: Collect Tests Result
@@ -209,7 +209,7 @@ jobs:
 
       # Run Verify Plugin task and IntelliJ Plugin Verifier tool
       - name: Run Plugin Verification tasks
-        run: ./gradlew :intellij:verifyPlugin -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
+        run: ./gradlew :comment-remover:verifyPlugin -Dplugin.verifier.home.dir=${{ needs.build.outputs.pluginVerifierHomeDir }}
 
       # Collect Plugin Verifier Result
       - name: Collect Plugin Verifier Result
