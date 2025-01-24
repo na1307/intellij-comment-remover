@@ -78,7 +78,7 @@ jobs:
 
       # Build plugin
       - name: Build plugin
-        run: ./gradlew :comment-remover-rider:buildPlugin
+        run: ./gradlew :comment-remover-rider:buildPlugin -PbuildConfiguration=Release
 
       # Prepare plugin archive content for creating artifact
       - name: Prepare Plugin Artifact
@@ -102,7 +102,7 @@ jobs:
   verify:
     name: Verify plugin
     needs: [ build ]
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
 
       # Free GitHub Actions Environment Disk Space

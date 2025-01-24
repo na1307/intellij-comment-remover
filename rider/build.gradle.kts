@@ -23,6 +23,15 @@ val dotnetPluginId: String by project
 
 val buildToolExecutable: String by lazy {
     if (isWindows) {
+        val paths = System.getenv("PATH").split(";")
+
+        paths.forEach {
+            val msbuild = File("$it\\MSBuild.exe")
+            if (msbuild.exists()) {
+                return@lazy msbuild.absolutePath
+            }
+        }
+
         val stdout = ByteArrayOutputStream()
         serviceOf<ExecOperations>().exec {
             executable("${project.projectDir}/tools/vswhere.exe")
