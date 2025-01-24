@@ -33,3 +33,16 @@ updates:
       separator: _
     reviewers:
       - na1307
+  - package-ecosystem: dotnet-sdk
+    directory: rider/src/dotnet/
+    schedule:
+      interval: weekly
+      day: wednesday
+      time: "09:00"
+      timezone: Asia/Seoul
+    assignees:
+      - na1307
+    pull-request-branch-name:
+      separator: _
+    reviewers:
+      - na1307

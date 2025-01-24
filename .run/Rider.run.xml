@@ -10,7 +10,7 @@
       </option>
       <option name="taskNames">
         <list>
-          <option value=":comment-remover-rider:runIde" />
+          <option value=":comment-remover-csvbcpp:runIde" />
         </list>
       </option>
       <option name="vmOptions" value="" />

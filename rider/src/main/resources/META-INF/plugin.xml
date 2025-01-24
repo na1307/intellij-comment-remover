@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin url="https://github.com/na1307/intellij-comment-remover" require-restart="true">
-  <id>net.bluehill.commentRemover.rider</id>
-  <name>Comment Remover for Rider</name>
+  <id>net.bluehill.commentRemover.csvbcpp</id>
+  <name>Comment Remover - C#/VB/C++</name>
   <vendor url="https://na1307.github.io" email="na1307@outlook.kr">Jonghyo Lee</vendor>
 
   <depends>com.intellij.modules.platform</depends>
@@ -11,22 +11,22 @@
   <resource-bundle>messages.CrrBundle</resource-bundle>
   
   <actions>
-    <action id="net.bluehill.commentRemover.rider.actions.RemoveAllCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveAllCommentAction">
+    <action id="net.bluehill.commentRemover.csvbcpp.actions.RemoveAllCommentAction" class="net.bluehill.commentRemover.csvbcpp.actions.RemoveAllCommentAction">
       <add-to-group group-id="BluehillCommentRemover" relative-to-action="net.bluehill.commentRemover.actions.RemoveAllCommentAction" anchor="after"/>
     </action>
-    <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedCommentAction">
+    <action id="net.bluehill.commentRemover.csvbcpp.actions.RemoveSelectedCommentAction" class="net.bluehill.commentRemover.csvbcpp.actions.RemoveSelectedCommentAction">
       <add-to-group group-id="BluehillCommentRemover" relative-to-action="net.bluehill.commentRemover.actions.RemoveSelectedCommentAction" anchor="after"/>
     </action>
-    <action id="net.bluehill.commentRemover.rider.actions.RemoveAllDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveAllDocCommentAction">
+    <action id="net.bluehill.commentRemover.csvbcpp.actions.RemoveAllDocCommentAction" class="net.bluehill.commentRemover.csvbcpp.actions.RemoveAllDocCommentAction">
       <add-to-group group-id="BluehillCommentRemover" relative-to-action="net.bluehill.commentRemover.actions.RemoveAllDocCommentAction" anchor="after"/>
     </action>
-    <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedDocCommentAction">
+    <action id="net.bluehill.commentRemover.csvbcpp.actions.RemoveSelectedDocCommentAction" class="net.bluehill.commentRemover.csvbcpp.actions.RemoveSelectedDocCommentAction">
       <add-to-group group-id="BluehillCommentRemover" relative-to-action="net.bluehill.commentRemover.actions.RemoveSelectedDocCommentAction" anchor="after"/>
     </action>
-    <action id="net.bluehill.commentRemover.rider.actions.RemoveAllExceptDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveAllExceptDocCommentAction">
+    <action id="net.bluehill.commentRemover.csvbcpp.actions.RemoveAllExceptDocCommentAction" class="net.bluehill.commentRemover.csvbcpp.actions.RemoveAllExceptDocCommentAction">
       <add-to-group group-id="BluehillCommentRemover" relative-to-action="net.bluehill.commentRemover.actions.RemoveAllExceptDocCommentAction" anchor="after"/>
     </action>
-    <action id="net.bluehill.commentRemover.rider.actions.RemoveSelectedExceptDocCommentAction" class="net.bluehill.commentRemover.rider.actions.RemoveSelectedExceptDocCommentAction">
+    <action id="net.bluehill.commentRemover.csvbcpp.actions.RemoveSelectedExceptDocCommentAction" class="net.bluehill.commentRemover.csvbcpp.actions.RemoveSelectedExceptDocCommentAction">
       <add-to-group group-id="BluehillCommentRemover" relative-to-action="net.bluehill.commentRemover.actions.RemoveSelectedExceptDocCommentAction" anchor="after"/>
     </action>
   </actions>

@@ -1,4 +1,4 @@
-# Comment Remover for Rider
+# Comment Remover - C#/VB/C++
 
 ![Build](https://github.com/na1307/intellij-comment-remover/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/ID.svg)](https://plugins.jetbrains.com/plugin/ID)
@@ -12,7 +12,7 @@ This plugin extends the [Comment Remover](https://plugins.jetbrains.com/plugin/2
 
 - Using the IDE built-in plugin system:
   
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Comment Remover for Rider"</kbd> >
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Comment Remover - C#/VB/C++"</kbd> >
   <kbd>Install</kbd>
   
 - Using JetBrains Marketplace:

@@ -1,4 +1,4 @@
-package net.bluehill.commentRemover.rider
+package net.bluehill.commentRemover.csvbcpp
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls

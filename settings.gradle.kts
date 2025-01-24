@@ -8,4 +8,4 @@ include("intellij")
 project(":intellij").name = "comment-remover"
 
 include("rider")
-project(":rider").name = "comment-remover-rider"
+project(":rider").name = "comment-remover-csvbcpp"
