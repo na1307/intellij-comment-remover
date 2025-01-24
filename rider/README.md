@@ -1,8 +1,8 @@
 # Comment Remover - C#/VB/C++
 
 ![Build](https://github.com/na1307/intellij-comment-remover/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/ID.svg)](https://plugins.jetbrains.com/plugin/ID)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/ID.svg)](https://plugins.jetbrains.com/plugin/ID)
+[![Version](https://img.shields.io/jetbrains/plugin/v/26398.svg)](https://plugins.jetbrains.com/plugin/26398)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/26398.svg)](https://plugins.jetbrains.com/plugin/26398)
 
 <!-- Plugin description -->
 This plugin extends the [Comment Remover](https://plugins.jetbrains.com/plugin/26369) plugin. The Comment Remover plugin alone cannot properly remove comments from C#/VB/C++ files in Rider. This plugin solves this problem by using the ReSharper engine.
@@ -10,16 +10,16 @@ This plugin extends the [Comment Remover](https://plugins.jetbrains.com/plugin/2
 
 ## Installation
 
-- Using the IDE built-in plugin system:
+- Using the 26398E built-in plugin system:
   
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Comment Remover - C#/VB/C++"</kbd> >
   <kbd>Install</kbd>
   
 - Using JetBrains Marketplace:
 
-  Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/ID) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
+  Go to [JetBrains Marketplace](https://plugins.jetbrains.com/plugin/26398) and install it by clicking the <kbd>Install to ...</kbd> button in case your IDE is running.
 
-  You can also download the [latest release](https://plugins.jetbrains.com/plugin/ID/versions) from JetBrains Marketplace and install it manually using
+  You can also download the [latest release](https://plugins.jetbrains.com/plugin/26398/versions) from JetBrains Marketplace and install it manually using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 
 - Manually:

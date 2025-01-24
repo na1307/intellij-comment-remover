@@ -6,14 +6,14 @@
 
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
+  <depends optional="true" config-file="rider.xml">com.intellij.modules.rider</depends>
 
   <resource-bundle>messages.CrBundle</resource-bundle>
 
   <actions>
-    <group id="BluehillCommentRemover">
+    <group id="BluehillCommentRemover" popup="true">
       <add-to-group group-id="EditMenu" relative-to-action="Macros" anchor="before"/>
       <add-to-group group-id="EditorPopupMenu" relative-to-action="EditorToggleColumnMode" anchor="after"/>
-      <separator/>
       <action
           id="net.bluehill.commentRemover.actions.RemoveAllCommentAction"
           class="net.bluehill.commentRemover.actions.RemoveAllCommentAction">
@@ -38,7 +38,6 @@
           id="net.bluehill.commentRemover.actions.RemoveSelectedExceptDocCommentAction"
           class="net.bluehill.commentRemover.actions.RemoveSelectedExceptDocCommentAction">
       </action>
-      <separator/>
     </group>
   </actions>
 </idea-plugin>

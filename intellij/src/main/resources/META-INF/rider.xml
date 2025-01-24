@@ -1,0 +1,5 @@
+<idea-plugin>
+  <extensions defaultExtensionNs="com.intellij">
+    <editorNotificationProvider id="net.bluehill.commentRemover.banners.CrrBannerProvider" implementation="net.bluehill.commentRemover.banners.CrrBannerProvider"/>
+  </extensions>
+</idea-plugin>
