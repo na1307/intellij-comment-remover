@@ -1,13 +1,11 @@
 # Comment Remover for Rider
 
 ![Build](https://github.com/na1307/intellij-comment-remover/workflows/Build/badge.svg)
-[![Version](https://img.shields.io/jetbrains/plugin/v/26369.svg)](https://plugins.jetbrains.com/plugin/26369)
-[![Downloads](https://img.shields.io/jetbrains/plugin/d/26369.svg)](https://plugins.jetbrains.com/plugin/26369)
+[![Version](https://img.shields.io/jetbrains/plugin/v/ID.svg)](https://plugins.jetbrains.com/plugin/ID)
+[![Downloads](https://img.shields.io/jetbrains/plugin/d/ID.svg)](https://plugins.jetbrains.com/plugin/ID)
 
 <!-- Plugin description -->
-This plugin removes comments from the code. It can remove single line comments, multi-line comments, and Javadoc comments.
-
-Inspired by Mads Kristensen's [Comment Remover](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.CommentRemover) Visual Studio extension.
+This plugin extends the [Comment Remover](https://plugins.jetbrains.com/plugin/26369) plugin. The Comment Remover plugin alone cannot properly remove comments from C#/VB/C++ files in Rider. This plugin solves this problem by using the ReSharper engine.
 <!-- Plugin description end -->
 
 ## Installation
