@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [0.2.1] - 2025-01-25
+### Added
+- Better Rider plugin installation experience
+
 ## [0.2.0] - 2025-01-24
 ### Added
 - More commands

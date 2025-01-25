@@ -10,7 +10,7 @@ This plugin extends the [Comment Remover](https://plugins.jetbrains.com/plugin/2
 
 ## Installation
 
-- Using the 26398E built-in plugin system:
+- Using the IDE built-in plugin system:
   
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Comment Remover - C#/VB/C++"</kbd> >
   <kbd>Install</kbd>

@@ -5,7 +5,15 @@
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/26369.svg)](https://plugins.jetbrains.com/plugin/26369)
 
 <!-- Plugin description -->
-This plugin removes comments from the code. It can remove single line comments, multi-line comments, and Javadoc comments.
+This plugin removes comments from the code.
+
+This can remove:
+- Single line, Multi-line comments in most languages (Java, Kotlin, JavaScript, TypeScript, HTML, CSS, etc.)
+- JavaDoc, KDoc comments
+
+This can't remove:
+- Comments in C#, VB, C++ in Rider (use an [additional plugin](https://plugins.jetbrains.com/plugin/26398) instead)
+- Multi-line comments in Python, because these are actually strings
 
 Inspired by Mads Kristensen's [Comment Remover](https://marketplace.visualstudio.com/items?itemName=MadsKristensen.CommentRemover) Visual Studio extension.
 <!-- Plugin description end -->

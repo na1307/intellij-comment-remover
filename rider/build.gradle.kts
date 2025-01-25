@@ -225,12 +225,6 @@ tasks {
             }
         }
     }
-
-    publishPlugin {
-        dependsOn(patchChangelog)
-        dependsOn(testDotNet)
-        dependsOn(buildPlugin)
-    }
 }
 
 intellijPlatformTesting {
