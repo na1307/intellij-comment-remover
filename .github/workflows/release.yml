@@ -12,7 +12,7 @@ jobs:
   # Prepare and publish the plugin to JetBrains Marketplace repository
   release:
     name: Publish Plugin
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
       pull-requests: write
@@ -35,20 +35,6 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      # Set environment variables
-      - name: Export Properties
-        id: properties
-        shell: bash
-        run: |
-          CHANGELOG="$(cat << 'EOM' | sed -e 's/^[[:space:]]*$//g' -e '/./,$!d'
-          ${{ github.event.release.body }}
-          EOM
-          )"
-          
-          echo "changelog<<EOF" >> $GITHUB_OUTPUT
-          echo "$CHANGELOG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
       # Publish the plugin to JetBrains Marketplace
       - name: Publish Plugin
         env:
@@ -60,6 +46,7 @@ jobs:
 
       # Upload artifact as a release asset
       - name: Upload Release Asset
+        shell: bash
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: gh release upload ${{ github.event.release.tag_name }} ./**/build/distributions/*

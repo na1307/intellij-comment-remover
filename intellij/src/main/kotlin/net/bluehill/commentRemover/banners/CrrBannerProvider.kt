@@ -4,6 +4,8 @@ import com.intellij.ide.plugins.PluginEnabler
 import com.intellij.ide.plugins.PluginManager
 import com.intellij.ide.plugins.PluginManagerMain
 import com.intellij.ide.plugins.PluginNode
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ModalityState
 import com.intellij.openapi.editor.colors.ColorKey
 import com.intellij.openapi.extensions.PluginId
@@ -36,7 +38,7 @@ class CrrBannerProvider : EditorNotificationProvider {
         )
 
         panel.text = CrBundle.message("riderPluginRequired")
-        
+
         panel.createActionLabel(CrBundle.message("installRiderPlugin")) {
             PluginManagerMain.downloadPlugins(
                 listOf(PluginNode(riderPluginId)),
@@ -45,8 +47,16 @@ class CrrBannerProvider : EditorNotificationProvider {
                 null,
                 PluginEnabler.getInstance(),
                 ModalityState.nonModal(),
-                null
-            )
+            ) {
+                if (it) {
+                    NotificationGroupManager.getInstance().getNotificationGroup("CrNotificationGroup")
+                        .createNotification(
+                            CrBundle.message("riderPluginInstalled.title"),
+                            CrBundle.message("riderPluginInstalled.message"),
+                            NotificationType.INFORMATION
+                        ).notify(null)
+                }
+            }
         }
 
         panel.setCloseAction { panel.isVisible = false }

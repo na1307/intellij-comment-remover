@@ -10,6 +10,10 @@
 
   <resource-bundle>messages.CrBundle</resource-bundle>
 
+  <extensions defaultExtensionNs="com.intellij">
+    <notificationGroup displayType="BALLOON" id="CrNotificationGroup" key="notification.group.crnotificationgroup"/>
+  </extensions>
+
   <actions>
     <group id="BluehillCommentRemover" popup="true">
       <add-to-group group-id="EditMenu" relative-to-action="Macros" anchor="before"/>
