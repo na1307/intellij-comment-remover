@@ -34,7 +34,7 @@ updates:
     reviewers:
       - na1307
   - package-ecosystem: dotnet-sdk
-    directory: rider/src/dotnet/
+    directory: rider/
     schedule:
       interval: weekly
       day: wednesday

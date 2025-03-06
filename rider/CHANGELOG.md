@@ -1,6 +1,6 @@
 <!-- Keep a Changelog guide -> https://keepachangelog.com -->
 
-# Comment Remover for Rider Changelog
+# Comment Remover - C#/VB/C++ Changelog
 
 ## [Unreleased]
 
