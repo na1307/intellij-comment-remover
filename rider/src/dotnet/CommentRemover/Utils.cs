@@ -1,4 +1,4 @@
-using JetBrains.ReSharper.Psi.Tree;
+﻿using JetBrains.ReSharper.Psi.Tree;
 using JetBrains.TextControl;
 using JetBrains.Util;
 
@@ -21,7 +21,7 @@ internal static class Utils {
         return selection.HasSelection() ? selection.Ranges.Value.Select(r => r.ToDocRangeNormalized()) : null;
     }
 
-    public static bool IsNodeinRanges(ITreeNode node, IEnumerable<TextRange> ranges) {
+    public static bool IsNodeInRanges(ITreeNode node, IEnumerable<TextRange> ranges) {
         var startOffset = node.GetTreeStartOffset().Offset;
         var endOffset = node.GetTreeEndOffset().Offset;
 

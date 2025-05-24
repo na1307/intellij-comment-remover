@@ -39,7 +39,7 @@ public sealed class RemoveSelectedExceptDocCommentAction : RemoveCommentActionBa
 
         var comments = childrens.OfType<ICommentNode>()
             .Where(n => n is not JetBrains.ReSharper.Psi.CSharp.Tree.IDocCommentNode
-                and not JetBrains.ReSharper.Psi.VB.Tree.IDocComment && Utils.IsNodeinRanges(n, ranges)).ToArray();
+                and not JetBrains.ReSharper.Psi.VB.Tree.IDocComment && Utils.IsNodeInRanges(n, ranges)).ToArray();
 
         if (comments.Length == 0) {
             return;

@@ -39,7 +39,7 @@ public abstract class RemoveSelectedCommentActionBase<TNode> : RemoveCommentActi
         Childrens = Utils.GetAllChildrens(file).ToArray();
 
         var comments = Childrens.OfType<TNode>().Cast<ITreeNode>().Concat(AdditionalNodes)
-            .Where(n => Utils.IsNodeinRanges(n, ranges)).ToArray();
+            .Where(n => Utils.IsNodeInRanges(n, ranges)).ToArray();
 
         if (comments.Length == 0) {
             return;

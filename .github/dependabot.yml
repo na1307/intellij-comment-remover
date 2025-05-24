@@ -14,8 +14,6 @@ updates:
       - na1307
     pull-request-branch-name:
       separator: _
-    reviewers:
-      - na1307
     groups:
       default:
         patterns:
@@ -31,8 +29,6 @@ updates:
       - na1307
     pull-request-branch-name:
       separator: _
-    reviewers:
-      - na1307
   - package-ecosystem: dotnet-sdk
     directory: rider/
     schedule:

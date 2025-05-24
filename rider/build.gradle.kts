@@ -100,7 +100,7 @@ val testDotNet by tasks.registering {
 
 dependencies {
     intellijPlatform {
-        rider(providers.gradleProperty("platformVersionRD"))
+        rider(providers.gradleProperty("platformVersionRD"), false)
 
         // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
         bundledPlugins(providers.gradleProperty("platformBundledPluginsRD").map { it.split(',') })
