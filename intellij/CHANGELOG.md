@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [0.2.2] - 2025-05-25
+### Added
+- Support 2025.2
+
 ## [0.2.1] - 2025-01-25
 ### Added
 - Better Rider plugin installation experience

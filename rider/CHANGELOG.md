@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [0.2.2] - 2025-05-25
+### Added
+- Support 2025.2
+
 ## [0.2.1] - 2025-01-25
 - There are no changes to csvbcpp, but it was released because the Comment Remover plugin changed.
 
