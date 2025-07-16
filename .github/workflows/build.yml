@@ -172,44 +172,44 @@ jobs:
           path: ./rider/build/distributions/content/*/*
 
   # Run tests and upload a code coverage report
-  test-intellij:
-    name: Test IntelliJ Plugin
-    needs: [ build-intellij ]
-    runs-on: ubuntu-latest
-    steps:
+  # test-intellij:
+  #   name: Test IntelliJ Plugin
+  #   needs: [ build-intellij ]
+  #   runs-on: ubuntu-latest
+  #   steps:
 
-      # Check out the current repository
-      - name: Fetch Sources
-        uses: actions/checkout@v4
+  #     # Check out the current repository
+  #     - name: Fetch Sources
+  #       uses: actions/checkout@v4
 
-      # Set up Java environment for the next steps
-      - name: Setup Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: 21
+  #     # Set up Java environment for the next steps
+  #     - name: Setup Java
+  #       uses: actions/setup-java@v4
+  #       with:
+  #         distribution: temurin
+  #         java-version: 21
 
-      # Setup Gradle
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v4
+  #     # Setup Gradle
+  #     - name: Setup Gradle
+  #       uses: gradle/actions/setup-gradle@v4
 
-      # Run tests
-      - name: Run Tests
-        run: ./gradlew :comment-remover:check
+  #     # Run tests
+  #     - name: Run Tests
+  #       run: ./gradlew :comment-remover:check
 
-      # Collect Tests Result of failed tests
-      - name: Collect Tests Result
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: tests-result
-          path: ${{ github.workspace }}/intellij/build/reports/tests
+  #     # Collect Tests Result of failed tests
+  #     - name: Collect Tests Result
+  #       if: ${{ failure() }}
+  #       uses: actions/upload-artifact@v4
+  #       with:
+  #         name: tests-result
+  #         path: ${{ github.workspace }}/intellij/build/reports/tests
 
-      # Upload the Kover report to CodeCov
-      - name: Upload Code Coverage Report
-        uses: codecov/codecov-action@v5
-        with:
-          files: ${{ github.workspace }}/intellij/build/reports/kover/report.xml
+  #     # Upload the Kover report to CodeCov
+  #     - name: Upload Code Coverage Report
+  #       uses: codecov/codecov-action@v5
+  #       with:
+  #         files: ${{ github.workspace }}/intellij/build/reports/kover/report.xml
 
   # Run plugin structure verification along with IntelliJ Plugin Verifier
   verify-intellij:

@@ -40,5 +40,3 @@ updates:
       - na1307
     pull-request-branch-name:
       separator: _
-    reviewers:
-      - na1307
