@@ -6,13 +6,8 @@
 
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
-  <depends optional="true" config-file="rider.xml">com.intellij.modules.rider</depends>
 
   <resource-bundle>messages.CrBundle</resource-bundle>
-
-  <extensions defaultExtensionNs="com.intellij">
-    <notificationGroup displayType="BALLOON" id="CrNotificationGroup" key="notification.group.crnotificationgroup"/>
-  </extensions>
 
   <actions>
     <group id="BluehillCommentRemover" popup="true">

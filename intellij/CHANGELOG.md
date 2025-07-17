@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-07-17
+### Added
+- C#/VB/C++ plugin installation mechanism has been removed
+
 ## [0.2.2] - 2025-05-25
 ### Added
 - Support 2025.2

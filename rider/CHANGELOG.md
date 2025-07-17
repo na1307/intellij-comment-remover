@@ -4,6 +4,11 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-07-17
+### Added
+- Reorganize the menu
+- No longer dependents the Comment Remover plugin
+
 ## [0.2.2] - 2025-05-25
 ### Added
 - Support 2025.2
