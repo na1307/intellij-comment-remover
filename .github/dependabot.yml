@@ -7,17 +7,15 @@ updates:
   - package-ecosystem: "gradle"
     directory: "/"
     schedule:
-      interval: daily
-      time: "18:00"
+      interval: weekly
+      day: wednesday
+      time: "09:00"
       timezone: Asia/Seoul
-    assignees:
-      - na1307
-    pull-request-branch-name:
-      separator: _
     groups:
       default:
         patterns:
           - "*"
+
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -25,10 +23,7 @@ updates:
       interval: monthly
       time: "12:00"
       timezone: Asia/Seoul
-    assignees:
-      - na1307
-    pull-request-branch-name:
-      separator: _
+
   - package-ecosystem: dotnet-sdk
     directory: rider/
     schedule:
@@ -36,7 +31,3 @@ updates:
       day: wednesday
       time: "09:00"
       timezone: Asia/Seoul
-    assignees:
-      - na1307
-    pull-request-branch-name:
-      separator: _
